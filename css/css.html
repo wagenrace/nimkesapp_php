@@ -1,0 +1,16 @@
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+
+    $(".tab-group").ready(function(){
+    var number_li = $(".tab-group li").length;
+    $(".tab-group li a").css("width", Math.round(100/number_li) + "%")
+
+    /*The last one always fills it up*/
+    $(".tab-group li:last-child a").css("width", 100 - (number_li - 1) * Math.round(100/number_li) + "%")
+    });
+
+</script>
