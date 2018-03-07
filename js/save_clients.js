@@ -14,7 +14,7 @@ function download() {
         a.click();
         setTimeout(function() {
             document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }, 0);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
     }
 }

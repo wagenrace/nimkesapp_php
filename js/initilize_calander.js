@@ -1,4 +1,4 @@
-/*
+/* 
 Setting up the Calander
 */
 var svg_calander = d3.select("#calander_svg")
@@ -17,10 +17,10 @@ start_slot = 8
 
 for(var i = start_slot; i < 19; i++){
         slota = {id: i + "00",
-                 name: i + ":00",
+                 name: i + ":00", 
                  y: (i - start_slot)* height_day_box + height_day_box}
         slotb = {id: i + "30",
-                 name: i + ":30",
+                 name: i + ":30", 
                  y: ((i + 0.5) - start_slot)* height_day_box + height_day_box}
         names_slots.push(slota)
         names_slots.push(slotb)
@@ -31,8 +31,8 @@ var empty_text_color = "#808080"
 
 function set_default_calander(){
     svg_calander.selectAll("g").remove();
-
-    var all_days = svg_calander
+    
+    var all_days = svg_calander	
                 .selectAll("g").data(day_slots)
                 .enter().append("g")
                 .attr("id", function(d) {return("id_day_"+d.name)})
@@ -40,7 +40,7 @@ function set_default_calander(){
                     pos_x = (d.x+0.30) * width_day_slot
                     return("translate(" + pos_x + ",0)")})
 
-    var slot_labels = svg_calander
+    var slot_labels = svg_calander	
         .append("g")
         .attr("id", "slot_labels")
         .attr("transform","translate(0,0)")

@@ -27,7 +27,7 @@ a:hover {
 }
 
 .form {
-  background: rgba(19, 35, 47, 0.9);
+  background: rgba(19, 35, 47, 0.9); 
   padding: 40px;
   max-width: 600px;
   margin: 40px auto;
@@ -216,11 +216,10 @@ textarea {
   background: #179b77;
 }
 
-
-
 .button-block {
-  display: block;
-  width: 100%;
+    display: block;
+    width: 100%;
+    bottom: 3%;
 }
 
 .forgot {
@@ -231,8 +230,8 @@ textarea {
 .patient_bench{
   float:left;
   height: 100vh;
-  width:10vw;
-  padding:3px;
+  width:10vw; 
+  padding:3px; 
   margin: 5px;
   background:#999;
   overflow-y: auto;
@@ -241,15 +240,15 @@ textarea {
 .calander{
   float:left;
   height: 100vh;
-  width:84vw;
+  width:84vw; 
   padding:3px;
   margin: 5px;
   background:#999;
   overflow: auto;
 }
 
-/* The Modal (background) */
 .modal {
+    color: white;
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -265,7 +264,9 @@ textarea {
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
+    background-color: rgba(19, 35, 47); /* Fallback color */
+    background-color: rgba(19, 35, 47, 0.9); /* Black w/ opacity */
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
     margin: auto;
     padding: 1%;
     width: 90%;
@@ -276,6 +277,10 @@ textarea {
 .input-boxes{
     width:20%;
     float:left;
+    height: 100%;
+}
+
+.input-form{
     overflow:auto;
     height: 90%;
 }

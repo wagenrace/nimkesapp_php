@@ -68,10 +68,10 @@ var cc = clickcancel();
 function add_patients(){
     //viewbox to correct size
     svg_patient_bench.attr("viewBox", "0 0 " + width_patient_box + " " + (patient_data.length * height_patient_box * 1.1 + height_patient_box))
-
+    
     //Clear the whole bench
     svg_patient_bench.selectAll("*").remove();
-
+    
     patient_data.sort(function(a, b){
         a = a.name.toLowerCase()
         b = b.name.toLowerCase()
@@ -80,9 +80,9 @@ function add_patients(){
     for(var i = 0; i<patient_data.length; i++){
         patient_data[i].y = (i * height_patient_box * 1.1).toFixed(0)
     }
-
+    
     //Fill the bench with new patients
-    var all_patients = svg_patient_bench
+    var all_patients = svg_patient_bench	
     .selectAll("g").data(patient_data)
     .enter().append("g")
     .attr("id", function(d) {return("id_num_"+d.id)})
@@ -101,22 +101,22 @@ function add_patients(){
         .attr("x", 15)
         .attr("y", height_patient_box/2)
         .text(function(d) {return(d.name)});
-
+    
     all_patients.call(cc);
-
+    
     cc.on('dblclick', function(d) {
         open_model_existing_patient(d.id)
     });
-
+    
     cc.on("click", function(d){
         set_active_number(d.id)
     });
-
-
+    
+    
     /*
     CALANDER
     */
-
+    
     //Fill the calander with planned appointments
     patient_data.forEach(function(patient) {
         patient.planned_slots.forEach(function(slot_name) {

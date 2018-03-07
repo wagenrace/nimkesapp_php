@@ -12,13 +12,13 @@ function show_possible_slots(patient_id){
                 time_slot_is_empty = false
             }
         }
-
+        
         if(time_slot_is_empty){
             day_slot.select("rect").attr("fill", "green");
             day_slot.select("text").attr("fill", "white");
         }else{
            day_slot.select("rect").attr("fill", "green");
-            day_slot.select("text").attr("fill", "red");
+            day_slot.select("text").attr("fill", "red"); 
         }
     });
     show_mode_possible_slots = true

@@ -4,8 +4,7 @@ var extra_mini_day_id = "_mini"
 var modal = document.getElementById('myModal');
 var id_modal_patient = -1
 
-function add_new_patient(){
-    new_name = document.getElementById('add_new_patient_name').value
+function add_new_patient(new_name){
     if(id_modal_patient == -1){
         var max_id = 0
         for(var i = 0; i<patient_data.length; i++){
@@ -27,7 +26,7 @@ function add_new_patient(){
 
 
 function show_model_new_patient(){
-
+    
     id_modal_patient = -1
     modal.style.display = "block";
     add_mini_calander();
@@ -53,8 +52,8 @@ function dont_show_model_new_patient(){
 
 function add_mini_calander(){
     svg_mini_calander.selectAll("g").remove();
-
-    var all_days = svg_mini_calander
+    
+    var all_days = svg_mini_calander	
                 .selectAll("g").data(day_slots)
                 .enter().append("g")
                 .attr("id", function(d) {return("id_day_"+d.name)})
@@ -62,7 +61,7 @@ function add_mini_calander(){
                     pos_x = d.x * width_day_slot
                     return("translate(" + pos_x + ",0)")})
 
-    var slot_labels = svg_mini_calander
+    var slot_labels = svg_mini_calander	
         .append("g")
         .attr("id", "slot_labels")
         .attr("transform","translate(0,0)")
@@ -98,7 +97,7 @@ function add_mini_calander(){
         .attr("text-anchor", "middle")
         .attr("font-size",3)
         .text(function(d){ return d.name});
-
+    
     for(var i =0; i<all_new_aviable.length; i++){
         set_activity_mini_slot(all_new_aviable[i], false)
     }

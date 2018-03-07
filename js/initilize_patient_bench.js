@@ -1,10 +1,10 @@
-/*
-Setting up the patient bench
+/* 
+Setting up the patient bench 
 */
 
-var patient_data = [{x : 0,
-                     y : 0,
-                     id: 1,
+var patient_data = [{x : 0, 
+                     y : 0, 
+                     id: 1, 
                      name: "Test Client",
                      avible_slots:["id_day_Tuesday800",
                                    "id_day_Tuesday900",
