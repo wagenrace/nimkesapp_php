@@ -1,10 +1,6 @@
-Hello world<br>
 <?php
 
-//connection variables
-$host = 'localhost';
-$user = 'root';
-$password = 'Ik zal eenhoorns temmen';
+require '../db.php';
 
 //create mysql connection
 $mysqli = new mysqli($host,$user,$password);
