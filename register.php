@@ -16,11 +16,23 @@ $password = $mysqli->escape_string(password_hash($_POST['password'], PASSWORD_BC
 $hash = $mysqli->escape_string( md5( rand(0,1000) ) );
       
 // Check if user with that email already exists
-$result = $mysqli->query("SELECT * FROM users WHERE email='$email'") or die($mysqli->error());
+$stmt = $mysqli->prepare("SELECT ALL id FROM users WHERE email=?");
+$stmt->bind_param("s", $email);
+
+$stmt->execute();
+
+/* bind result variables */
+$stmt->bind_result($result);
+
+/* fetch value */
+$stmt->fetch();
 
 // We know user email exists if the rows returned are more than 0
+
 if ( $result->num_rows > 0 ) {
-    
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    }
     $_SESSION['message'] = 'User with this email already exists!';
     header("location: error.php");
     
@@ -28,12 +40,17 @@ if ( $result->num_rows > 0 ) {
 else { // Email doesn't already exist in a database, proceed...
 
     // active is 0 by DEFAULT (no need to include it here)
-    $sql = "INSERT INTO users (first_name, last_name, email, password, hash) " 
-            . "VALUES ('$first_name','$last_name','$email','$password', '$hash')";
+
+    $sql = "INSERT INTO users (first_name, last_name, email, password, hash) VALUES (?,?,?,?,?)";
+
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("sssss", $first_name, $last_name, $email, $password, $hash);
+    $stmt->execute();
+    $stmt->close();
 
     // Add user to the database
     if ( $mysqli->query($sql) ){
-
+        $_SESSION['user_id'] = $mysqli->insert_id;
         $_SESSION['active'] = 0; //0 until user activates their account with verify.php
         $_SESSION['logged_in'] = true; // So we know the user has logged in
         $_SESSION['message'] =
