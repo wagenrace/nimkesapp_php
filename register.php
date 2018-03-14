@@ -51,7 +51,7 @@ if ( $mysqli->query($sql) ){
 
     // Send registration confirmation link (verify.php)
     $to      = $email;
-    $subject = 'Account Verification ( clevertechie.com )';
+    $subject = 'Account Verification nimkesapp.nl';
     $message_body = '
     Hello '.$first_name.',
 
