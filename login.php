@@ -1,6 +1,6 @@
 <?php
 /* User login process, checks if user exists and password is correct */
-
+session_set_cookie_params(0);
 // Escape email to protect against SQL injections
 $email = $mysqli->escape_string($_POST['email']);
 $result = $mysqli->query("SELECT * FROM users WHERE email='$email'");
