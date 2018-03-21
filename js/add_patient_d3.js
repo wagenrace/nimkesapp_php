@@ -124,3 +124,22 @@ function add_patients(){
         });
     });
 }
+
+function check_new_patients(){
+    var parsedJSON;
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            parsedJSON = JSON.parse(this.responseText);
+            if(parsedJSON && parsedJSON != patient_data){
+                patient_data = parsedJSON;
+                add_patients();
+            }
+        }
+    };
+    xmlhttp.open("GET", "php/get_patient.php", true);
+    xmlhttp.send();
+}
+
+var t=setInterval(check_new_patients,1000);

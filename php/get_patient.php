@@ -34,7 +34,7 @@ if ($stmt_acc_client = $mysqli->prepare("SELECT client_id FROM accounts_clients 
                 $full_client->id=$client_id;
                 $full_client->name=$first_name;
                 $full_client->last_name=$last_name;
-                array_push($results, json_encode($full_client));
+                array_push($results, $full_client);
             }
         }
         echo json_encode($results);

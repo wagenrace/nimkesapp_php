@@ -36,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         require 'php/add_patient.php';
         
     }
-    
 }
 ?>
 
