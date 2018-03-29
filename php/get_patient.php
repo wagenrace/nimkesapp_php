@@ -34,6 +34,10 @@ if ($stmt_acc_client = $mysqli->prepare("SELECT client_id FROM accounts_clients 
                 $full_client->id=$client_id;
                 $full_client->name=$first_name;
                 $full_client->last_name=$last_name;
+                $full_client->avible_slots=array();
+                $full_client->planned_slots=array();
+                $full_client->x=0;
+                $full_client->y=0;
                 array_push($results, $full_client);
             }
         }

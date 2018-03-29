@@ -119,6 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <svg id="calander_svg" viewbox="0 0 100 100"></svg>
     </div>
     
+    <script src="jquery-3.3.1.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="js/initilize_patient_bench.js"></script>
     <script src="js/initilize_calander.js"></script>
