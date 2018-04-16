@@ -27,7 +27,7 @@ function show_possible_slots(patient_id){
 function dont_show_possible_slots(patient_id){
     if(show_mode_possible_slots){
         show_mode_possible_slots = false
-        set_default_calander();
-        add_patients();
+        show_calander();
+        show_all_patients();
     }
 }

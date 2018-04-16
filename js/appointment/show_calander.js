@@ -10,7 +10,7 @@ for(var i = start_slot; i < 19; i++){
     };
 
 
-function set_default_calander(){
+function show_calander(){
     svg_calander.selectAll("g").remove();
 
     var all_days = svg_calander
@@ -84,4 +84,4 @@ function set_default_calander(){
        });
 }
 
-set_default_calander()
+show_calander()
