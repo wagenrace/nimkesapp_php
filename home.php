@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     
     
     <div class="tab-group">
-    <li class="tab"><a href="#signup" onclick="show_model_new_patient();">Add patient</a></li>
+    <li class="tab"><a href="#signup" onclick="open_add_patient();">Add patient</a></li>
     <li class="tab"><a href="#signup">Save</a></li>
     <li class="tab"><a href="#signup">Load</a></li>   
     </div>
@@ -69,14 +69,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <div id="myModal" class="modal">
       <div class="modal-content">
 
-        <span class="close" onclick="dont_show_model_new_patient()">&times;</span>
+        <span class="close" onclick="dont_show_add_patient()">&times;</span>
         
           <div class="input-boxes">
         <form action="home.php" method="post" autocomplete="off" class="input-form">
           
             <div class="field-wrap">
               First Name <span class="req">*</span><br>
-            <input type="name" required autocomplete="off" name="first_name"/>
+            <input type="name" required autocomplete="off" name="first_name" id="first_name_input"/>
           </div>
             
             <div class="field-wrap">
@@ -93,15 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         </form>
           
           </div>
-          <!--
-        
-            Name: <input type="text" id="add_new_patient_name"><br>
 
-        </div>
-        <div class="save-button">
-            <button onclick="add_new_patient();" >Save</button>
-        </div>
--->
         <div class="mini-calander">
           <svg id="mini_calander_svg" viewbox="0 0 100 100">
               </svg>
@@ -121,15 +113,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     
     <script src="jquery-3.3.1.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="js/initilize_patient_bench.js"></script>
-    <script src="js/initilize_calander.js"></script>
-    <script src="js/show_possible_slots.js"></script>
-    <script src="js/fill_day_slot.js"></script>
-    <script src="js/add_patient_d3.js"></script>
-    <script src="js/load_clients.js"></script>
-    <script src="js/save_clients.js"></script>
-    <script src="js/add_new_patient.js"></script>
-    <script src="js/general_mouse_actions.js"></script>
+    <script src="js/global_vars.js"></script>
+    <script src="js/global_function.js"></script>
+
+    <script src="js/appointment/show_calander.js"></script>
+    <script src="js/appointment/show_appointment.js"></script>
+    <script src="js/appointment/add_appointment.js"></script>
+
+    <script src="js/patient/show_patient_bench.js"></script>
+    <script src="js/patient/add_patient.js"></script>
+    <script src="js/patient/open_add_patient.js"></script>
+    <script src="js/patient/show_patient.js"></script>
+    <script src="js/patient/show_possible_patients.js"></script>
+    <script src="js/patient/show_possible_slots.js"></script>
+    <script src="js/patient/update_patient.js"></script>
     <script>
         //add all patients to bench
         add_patients()
@@ -137,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
-                dont_show_model_new_patient();
+                dont_show_add_patient();
             }
         }
     </script>

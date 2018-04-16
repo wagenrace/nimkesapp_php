@@ -1,54 +1,22 @@
-var svg_mini_calander = d3.select("#mini_calander_svg")
-var all_new_aviable = []
-var extra_mini_day_id = "_mini"
-var modal = document.getElementById('myModal');
-var id_modal_patient = -1
-
-function add_new_patient(new_name){
-    if(id_modal_patient == -1){
-        var max_id = 0
-        for(var i = 0; i<patient_data.length; i++){
-            if(patient_data[i].id > max_id){
-                max_id = patient_data[i].id
-            }
-        }
-        new_patient = {id: max_id + 1, name:new_name, avible_slots: all_new_aviable.slice(), planned_slots: [], x:0, y:0}
-        patient_data.push(new_patient)
+function open_add_patient(_id = -1){
+    if(_id == -1){
+        id_modal_patient = -1
     }else{
+        id_modal_patient = _id
         patient_index = patient_data.findIndex(function(d){return d.id==id_modal_patient;})
-        patient_data[patient_index].avible_slots = all_new_aviable.slice()
-        patient_data[patient_index].name = new_name
+
+        all_new_aviable = patient_data[patient_index].avible_slots.slice()
+        document.getElementById('first_name_input').value = patient_data[patient_index].name
     }
-    add_patients()
-    all_new_aviable = []
-    dont_show_model_new_patient()
-}
-
-
-function show_model_new_patient(){
-
-    id_modal_patient = -1
     modal.style.display = "block";
     add_mini_calander();
 }
 
-function open_model_existing_patient(_id){
-    id_modal_patient = _id
-    patient_index = patient_data.findIndex(function(d){return d.id==_id;})
-    modal.style.display = "block";
-    all_new_aviable = patient_data[patient_index].avible_slots.slice()
-    document.getElementById('add_new_patient_name').value = patient_data[patient_index].name
-    add_mini_calander();
-}
 
-
-function dont_show_model_new_patient(){
+function dont_show_add_patient(){
     modal.style.display = "none";
     set_active_number(0)
-    set_default_calander()
-    add_patients()
 }
-
 
 function add_mini_calander(){
     svg_mini_calander.selectAll("g").remove();
@@ -105,32 +73,6 @@ function add_mini_calander(){
     .on("mouseover", dragged)
     .on("mousedown", dragstarted)
     .on("mouseup", dragended)
-}
-
-var change_stuff = false
-var turn_off = true
-function dragstarted(d) {
-    change_stuff = true
-    var _day_slot = this.id.split(extra_mini_day_id)[0]
-    turn_off = all_new_aviable.indexOf(_day_slot) > -1
-    set_activity_mini_slot(_day_slot, turn_off)
-}
-
-
-function dragged(d) {
-    var _day_slot = this.id.split(extra_mini_day_id)[0]
-    if(change_stuff){
-        set_activity_mini_slot(_day_slot, turn_off)
-    }
-}
-
-
-function dragended(d) {
-    var _day_slot = this.id.split(extra_mini_day_id)[0]
-    if(change_stuff){
-        set_activity_mini_slot(_day_slot, turn_off)
-    }
-    change_stuff = false
 }
 
 function set_activity_mini_slot(time_slot, status){

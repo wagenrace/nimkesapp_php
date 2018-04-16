@@ -34,7 +34,3 @@ $acces_level = "1";
 $stmt->execute();
 
 $stmt->close();
-
-
-//echo "<script>add_new_patient('$first_name_client')</script>";
-

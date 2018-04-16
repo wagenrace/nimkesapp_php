@@ -1,20 +1,3 @@
-/*
-Setting up the Calander
-*/
-var svg_calander = d3.select("#calander_svg")
-var names_days = ["Monday", "Tuesday", "Wensday", "Thursday", "Friday"]
-var day_slots = []
-for(var i = 0; i < names_days.length; i++){
-    new_enter = {name: names_days[i], x:i, hold:null}
-    day_slots.push(new_enter)
-}
-var width_day_slot = 100 / day_slots.length
-var width_day_box =  width_day_slot * 0.9
-var height_day_box = width_day_box / 1.618
-
-var names_slots = []
-start_slot = 8
-
 for(var i = start_slot; i < 19; i++){
         slota = {id: i + "00",
                  name: i + ":00",
@@ -25,9 +8,7 @@ for(var i = start_slot; i < 19; i++){
         names_slots.push(slota)
         names_slots.push(slotb)
     };
-var empty_bg_color = "#E0E0E0"
-var empty_text = "empty"
-var empty_text_color = "#808080"
+
 
 function set_default_calander(){
     svg_calander.selectAll("g").remove();

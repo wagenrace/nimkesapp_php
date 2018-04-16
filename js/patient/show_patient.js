@@ -63,9 +63,8 @@ function clickcancel() {
   return d3rebind(cc, dispatcher, 'on');
 }
 
-var cc = clickcancel();
-
 function add_patients(){
+    var cc = clickcancel();
     //viewbox to correct size
     svg_patient_bench.attr("viewBox", "0 0 " + width_patient_box + " " + (patient_data.length * height_patient_box * 1.1 + height_patient_box))
 
@@ -105,13 +104,12 @@ function add_patients(){
     all_patients.call(cc);
 
     cc.on('dblclick', function(d) {
-        open_model_existing_patient(d.id)
+        open_add_patient(d.id)
     });
 
     cc.on("click", function(d){
         set_active_number(d.id)
     });
-
 
     /*
     CALANDER
@@ -124,41 +122,3 @@ function add_patients(){
         });
     });
 }
-
-function compareArrays(a, b) {
-    return !a.some(function (e, i) {
-        return e != b[i];
-    });
-}
-
-function equal_patients(array1, array2){
-    get_all = function(currentList, currentValue){
-        currentList.push(currentValue["id"]);
-        return(currentList);
-    };
-    all_ids_1 = array1.reduce(get_all, [])
-    all_ids_2 = array2.reduce(get_all, [])
-    all_ids_1.sort()
-    all_ids_2.sort()
-    return(compareArrays(all_ids_1, all_ids_2));
-};
-
-function check_new_patients(){
-    var parsedJSON;
-    var xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            parsedJSON = JSON.parse(this.responseText);
-            if(parsedJSON && !equal_patients(parsedJSON, patient_data)){
-                patient_data = parsedJSON;
-                add_patients();
-                console.log("replace this shit");
-            }
-        }
-    };
-    xmlhttp.open("GET", "php/get_patient.php", true);
-    xmlhttp.send();
-}
-
-var t=setInterval(check_new_patients,1000);
