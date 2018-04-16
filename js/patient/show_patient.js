@@ -63,7 +63,7 @@ function clickcancel() {
   return d3rebind(cc, dispatcher, 'on');
 }
 
-function add_patients(){
+function show_all_patients(){
     var cc = clickcancel();
     //viewbox to correct size
     svg_patient_bench.attr("viewBox", "0 0 " + width_patient_box + " " + (patient_data.length * height_patient_box * 1.1 + height_patient_box))

@@ -75,6 +75,30 @@ function add_mini_calander(){
     .on("mouseup", dragended)
 }
 
+function dragstarted(d) {
+    change_stuff = true
+    var _day_slot = this.id.split(extra_mini_day_id)[0]
+    turn_off = all_new_aviable.indexOf(_day_slot) > -1
+    set_activity_mini_slot(_day_slot, turn_off)
+}
+
+
+function dragged(d) {
+    var _day_slot = this.id.split(extra_mini_day_id)[0]
+    if(change_stuff){
+        set_activity_mini_slot(_day_slot, turn_off)
+    }
+}
+
+
+function dragended(d) {
+    var _day_slot = this.id.split(extra_mini_day_id)[0]
+    if(change_stuff){
+        set_activity_mini_slot(_day_slot, turn_off)
+    }
+    change_stuff = false
+}
+
 function set_activity_mini_slot(time_slot, status){
     if(status){
         /*DEACTIVED*/

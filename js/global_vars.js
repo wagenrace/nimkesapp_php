@@ -1,6 +1,7 @@
 /*
 Variables for the mini calander within the model add_patient
 */
+var change_stuff = false
 var svg_mini_calander = d3.select("#mini_calander_svg")
 var all_new_aviable = []
 var extra_mini_day_id = "_mini"

@@ -15,7 +15,7 @@ function add_patient(new_name){
         patient_data[patient_index].avible_slots = all_new_aviable.slice()
         patient_data[patient_index].name = new_name
     }
-    add_patients()
+    show_all_patients()
     all_new_aviable = []
-    dont_show_model_new_patient()
+    dont_show_add_patient()
 }

@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 ?>
 
-<body>
+<body onmouseup="mouseUp()">
     <?php
     // Keep reminding the user this account is not active, until they activate
       if ( !$active ){
@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <script src="js/patient/update_patient.js"></script>
     <script>
         //add all patients to bench
-        add_patients()
+        show_all_patients()
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {

@@ -25,7 +25,7 @@ function check_new_patients(){
             parsedJSON = JSON.parse(this.responseText);
             if(parsedJSON && !equal_patients(parsedJSON, patient_data)){
                 patient_data = parsedJSON;
-                add_patients();
+                show_all_patients();
             }
         }
     };
