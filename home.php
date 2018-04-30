@@ -23,8 +23,9 @@ else {
   <title>Welcome <?= $first_name.' '.$last_name ?></title>
   <?php include 'css/css.html'; ?>
 </head>
-  
+
 <?php 
+    /*
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
     if (isset($_POST['add_patient'])) {
@@ -36,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         require 'php/add_patient.php';
         
     }
-}
+}*/
 ?>
 
 <body onmouseup="mouseUp()">
@@ -58,6 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
     ?>
     
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     
     <div class="tab-group">
     <li class="tab"><a href="#signup" onclick="open_add_patient();">Add patient</a></li>
@@ -71,28 +74,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
         <span class="close" onclick="dont_show_add_patient()">&times;</span>
         
-          <div class="input-boxes">
-        <form action="home.php" method="post" autocomplete="off" class="input-form">
-          
+        <div class="input-boxes">
+
             <div class="field-wrap">
               First Name <span class="req">*</span><br>
-            <input type="name" required autocomplete="off" name="first_name" id="first_name_input"/>
+            <input type="name" required autocomplete="off" name="new_patient_fname" id="first_name_input"/>
           </div>
             
             <div class="field-wrap">
               Last Name <span class="req">*</span><br>
-                <input type="name" required autocomplete="off" name="last_name"/>
+                <input type="name" autocomplete="off" name="new_patient_lname"/>
             </div>
             
             <div class="field-wrap">
                 Email Address <span class="req">*</span> <br>
-            <input type="email" required autocomplete="off" name="email"/>
+            <input type="email" autocomplete="off" name="new_patient_email"/>
           </div>
           
-          <button class="button button-block" name="add_patient" method="post">Save</button>
-        </form>
-          
-          </div>
+          <button class="button button-block" onclick="add_patient()">Save</button>
+        </div>
 
         <div class="mini-calander">
           <svg id="mini_calander_svg" viewbox="0 0 100 100">
@@ -111,11 +111,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <svg id="calander_svg" viewbox="0 0 100 100"></svg>
     </div>
     
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+
     <script src="js/global_vars.js"></script>
     <script src="js/global_function.js"></script>
-
     <script src="js/appointment/show_calander.js"></script>
     <script src="js/appointment/show_appointment.js"></script>
     <script src="js/appointment/add_appointment.js"></script>

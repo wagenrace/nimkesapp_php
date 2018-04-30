@@ -23,4 +23,3 @@ $stmt->bind_param("iiii", $account_id, $client_id, $start_time, $stop_time); // 
 $stmt->execute(); // execute the prepared statement again
 
 $stmt->close(); // close the prepared statement
-

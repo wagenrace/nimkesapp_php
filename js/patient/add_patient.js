@@ -1,3 +1,4 @@
+/*
 function add_patient(new_name){
     if(id_modal_patient == -1){
         var max_id = 0
@@ -18,4 +19,9 @@ function add_patient(new_name){
     show_all_patients()
     all_new_aviable = []
     dont_show_add_patient()
+}
+*/
+function add_patient(){
+    console.log(all_new_aviable);
+ console.log(document.getElementById("first_name_input").value)
 }
