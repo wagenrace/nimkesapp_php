@@ -1,9 +1,10 @@
 <?php
 
 $first_name_client = $mysqli->escape_string($_POST['first_name']);
-$last_name_client = $mysqli->escape_string($_POST['last_name']);
-$email_client = $mysqli->escape_string($_POST['email']);
-
+//$last_name_client = $mysqli->escape_string($_POST['last_name']);
+//$email_client = $mysqli->escape_string($_POST['email']);
+$last_name_client = "";
+$email_client = "";
 /*
 ==========================
 Adding patient to database
