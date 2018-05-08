@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             
             <div class="field-wrap">
               Last Name <span class="req">*</span><br>
-                <input type="name" autocomplete="off" name="new_patient_lname"/>
+                <input type="name" autocomplete="off" name="new_patient_lname" id="last_name_input"/>
             </div>
             
             <div class="field-wrap">

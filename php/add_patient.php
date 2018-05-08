@@ -1,18 +1,20 @@
 <?php
+require '../db.php';
 
 $first_name_client = $mysqli->escape_string($_POST['first_name']);
-//$last_name_client = $mysqli->escape_string($_POST['last_name']);
+$last_name_client = $mysqli->escape_string($_POST['last_name']);
 //$email_client = $mysqli->escape_string($_POST['email']);
-$last_name_client = "";
-$email_client = "";
+
+$email_client = "han@solo.nl";
+$availabilty = "{}";
 /*
 ==========================
 Adding patient to database
 ==========================
 */
-$sql = "INSERT INTO clients (first_name, last_name, email) VALUES (?,?,?)";
+$sql = "INSERT INTO clients (first_name, last_name, email, availability) VALUES (?,?,?,?)";
 $stmt = $mysqli->prepare($sql);
-$stmt->bind_param("sss", $first_name_client,$last_name_client,$email_client); // bind variables
+$stmt->bind_param("ssss", $first_name_client,$last_name_client,$email_client,$availabilty); // bind variables
 
 $stmt->execute(); // execute the prepared statement again
 
