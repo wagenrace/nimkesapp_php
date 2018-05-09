@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             <input type="email" autocomplete="off" name="new_patient_email"/>
           </div>
           
-          <button class="button button-block" onclick="add_patient()">Save</button>
+          <button class="button button-block" onclick="add_patient();dont_show_add_patient();">Save</button>
         </div>
 
         <div class="mini-calander">

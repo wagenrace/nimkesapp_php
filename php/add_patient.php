@@ -1,12 +1,13 @@
 <?php
 require '../db.php';
+session_start();
 
 $first_name_client = $mysqli->escape_string($_POST['first_name']);
 $last_name_client = $mysqli->escape_string($_POST['last_name']);
-//$email_client = $mysqli->escape_string($_POST['email']);
+$email_client = $mysqli->escape_string($_POST['email']);
 
-$email_client = "han@solo.nl";
-$availabilty = "{}";
+$availabilty = $mysqli->escape_string($_POST['availability']);
+
 /*
 ==========================
 Adding patient to database

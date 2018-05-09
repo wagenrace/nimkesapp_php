@@ -3,7 +3,7 @@ session_start();
 require '../db.php';
 
 if ($stmt_acc_client = $mysqli->prepare("SELECT client_id FROM accounts_clients WHERE account_id=?")) {
-    if($stmt_client = $mysqli->prepare("SELECT first_name, last_name FROM clients WHERE id=?")){
+    if($stmt_client = $mysqli->prepare("SELECT first_name, last_name, availability FROM clients WHERE id=?")){
         $all_client_ids = array();
 
         /*
@@ -24,7 +24,7 @@ if ($stmt_acc_client = $mysqli->prepare("SELECT client_id FROM accounts_clients 
         */
         $results = array();
         $stmt_client->bind_param("i", $client_id);
-        $stmt_client->bind_result($first_name, $last_name);
+        $stmt_client->bind_result($first_name, $last_name, $availability);
 
         foreach ($all_client_ids as $client_id) {
             $full_client = new \stdClass();
@@ -34,7 +34,7 @@ if ($stmt_acc_client = $mysqli->prepare("SELECT client_id FROM accounts_clients 
                 $full_client->id=$client_id;
                 $full_client->name=$first_name;
                 $full_client->last_name=$last_name;
-                $full_client->avible_slots=array();
+                $full_client->avible_slots=$availability;
                 $full_client->planned_slots=array();
                 $full_client->x=0;
                 $full_client->y=0;

@@ -35,7 +35,7 @@ CREATE TABLE `accounts`.`clients`
     `first_name` VARCHAR(50) NOT NULL,
      `last_name` VARCHAR(50) NOT NULL,
     `email` VARCHAR(100) NOT NULL,
-    `availability` VARCHAR(1000),
+    `availability` VARCHAR(1000) DEFAULT NULL,
 PRIMARY KEY (`id`)
 );');
 

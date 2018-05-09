@@ -22,11 +22,14 @@ function add_patient(new_name){
 }
 */
 function add_patient(){
-    console.log(all_new_aviable);
+
     console.log(document.getElementById("first_name_input").value)
     new_patient = {first_name: document.getElementById("first_name_input").value,
-    last_name: document.getElementById("last_name_input").value}
+    last_name: document.getElementById("last_name_input").value,
+    email: document.getElementById("last_name_input").value,
+    availability: JSON.stringify(all_new_aviable)}
 
+    console.log(JSON.stringify(all_new_aviable));
     $.ajax({
         type: 'POST',
         url: 'php/add_patient.php',
