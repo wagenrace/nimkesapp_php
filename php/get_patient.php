@@ -34,13 +34,15 @@ if ($stmt_acc_client = $mysqli->prepare("SELECT client_id FROM accounts_clients 
                 $full_client->id=$client_id;
                 $full_client->name=$first_name;
                 $full_client->last_name=$last_name;
-                $full_client->avible_slots=$availability;
+                $full_client->avible_slots=json_decode($availability);
                 $full_client->planned_slots=array();
                 $full_client->x=0;
                 $full_client->y=0;
                 array_push($results, $full_client);
+
             }
         }
+        //echo json_encode(json_decode($availability));
         echo json_encode($results);
     }
     /* close statement */

@@ -7,7 +7,7 @@ $last_name_client = $mysqli->escape_string($_POST['last_name']);
 $email_client = $mysqli->escape_string($_POST['email']);
 
 $availabilty = $mysqli->escape_string($_POST['availability']);
-
+$availabilty = str_replace("\\","",$availabilty);
 /*
 ==========================
 Adding patient to database
