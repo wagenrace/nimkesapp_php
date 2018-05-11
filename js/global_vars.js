@@ -33,7 +33,10 @@ Setting up the Appoinments
 var empty_bg_color = "#E0E0E0"
 var empty_text = "empty"
 var empty_text_color = "#808080"
-
+var all_appoinments = [{id: 0,
+                       slot: "id_day_Tuesday800"},
+                      {id: 0,
+                       slot: "id_day_Monday800"}]
 /*
 Setting up the patient bench
 */
